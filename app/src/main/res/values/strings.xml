@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">JetpackComposable</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="skip">Skip</string>
+    <string name="hello_again">Hello Again!</string>
+    <string name="welcome_back">Welcome Back</string>
+
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="are_you_new_user">Are you new user?</string>
+    <string name="register">Register</string>
+</resources>
