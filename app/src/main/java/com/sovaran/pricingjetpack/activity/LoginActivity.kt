@@ -1,11 +1,13 @@
 package com.sovaran.pricingjetpack.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ScrollView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,6 +36,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import com.sovaran.pricingjetpack.R
 import com.sovaran.pricingjetpack.ui.theme.*
 
@@ -52,7 +56,7 @@ class LoginActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Login()
+                    Login(this)
                 }
             }
         }
@@ -60,14 +64,18 @@ class LoginActivity : ComponentActivity() {
 }
 
 @Composable
-private fun Login() {
+private fun Login(context: Context) {
 
     var textEmail by remember { mutableStateOf<String>("") }
     var textPassword by remember { mutableStateOf<String>("") }
     var passwordVisibility: Boolean by remember { mutableStateOf(false) }
 
+   /*val  modifier = Modifier.verticalScroll(
+        state = rememberScrollState())*/
+
     Column(
         modifier = Modifier
+            .verticalScroll(state = rememberScrollState())
             .fillMaxHeight()
             .padding(0.dp, 10.dp, 0.dp, 0.dp),
         verticalArrangement = Arrangement.Top,
@@ -79,7 +87,11 @@ private fun Login() {
                 .align(Alignment.End)
                 .padding(10.dp)
                 .clickable {
-
+                    ContextCompat.startActivity(
+                        context,
+                        Intent(context, HomeActivity::class.java),
+                        null
+                    )
                 },
             textAlign = TextAlign.End,
             color = Purple500,
@@ -93,7 +105,7 @@ private fun Login() {
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        Image(
+        /*Image(
             painter = painterResource(id = R.drawable.ic_logo),
             contentDescription = "",
             alignment = Alignment.Center,
@@ -101,7 +113,9 @@ private fun Login() {
             modifier = Modifier
                 .height(120.dp)
                 .width(120.dp)
-        )
+        )*/
+
+        InfiniteAnimation()
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -215,8 +229,8 @@ private fun Login() {
                     // Please provide localized description for accessibility services
                     val description = if (passwordVisibility) "Hide password" else "Show password"
 
-                    IconButton(onClick = {passwordVisibility = !passwordVisibility}){
-                        Icon(painter  = image, description, modifier = Modifier.padding(10.dp))
+                    IconButton(onClick = { passwordVisibility = !passwordVisibility }) {
+                        Icon(painter = image, description, modifier = Modifier.padding(10.dp))
                     }
                 }
             )
@@ -237,7 +251,13 @@ private fun Login() {
         )
 
         Button(
-            onClick = { },
+            onClick = {
+                ContextCompat.startActivity(
+                    context,
+                    Intent(context, HomeActivity::class.java),
+                    null
+                )
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(65.dp)
@@ -277,7 +297,29 @@ private fun Login() {
     }
 
 
+
 }
+
+@Composable
+fun InfiniteAnimation() {
+    val infiniteTransition = rememberInfiniteTransition()
+
+    val heartSize by infiniteTransition.animateFloat(
+        initialValue = 120.0f,
+        targetValue = 130.0f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(800, delayMillis = 100,easing = FastOutLinearInEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
+    Image(
+        painter = painterResource(R.drawable.ic_logo),
+        contentDescription = "heart",
+        modifier = Modifier
+            .size(heartSize.dp)
+    )
+}
+
 
 @Composable
 fun Greeting2(name: String) {
@@ -289,6 +331,7 @@ fun Greeting2(name: String) {
 fun DefaultPreview2() {
     PricingJetpackTheme {
 //        Greeting2("Android")
-        Login()
+        val context = LocalContext.current
+        Login(context = context)
     }
 }

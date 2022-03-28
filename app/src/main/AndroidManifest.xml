@@ -9,23 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PricingJetpack">
-
+        <activity
+            android:name=".activity.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.PricingJetpack" />
         <activity
             android:name=".activity.SignUpActivity"
             android:exported="false"
             android:label="@string/title_activity_sign_up"
-            android:theme="@style/Theme.PricingJetpack" >
-
-        </activity>
-
+            android:theme="@style/Theme.PricingJetpack" />
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_login"
-            android:theme="@style/Theme.PricingJetpack" >
-
-        </activity>
-
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/Theme.PricingJetpack" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
@@ -33,10 +32,10 @@
             android:theme="@style/Theme.PricingJetpack">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
