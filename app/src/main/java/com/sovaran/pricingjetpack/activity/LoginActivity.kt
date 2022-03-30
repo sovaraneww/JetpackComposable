@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import com.sovaran.pricingjetpack.R
 import com.sovaran.pricingjetpack.ui.theme.*
+import kotlin.properties.Delegates
 
 class LoginActivity : ComponentActivity() {
 
@@ -70,17 +71,17 @@ private fun Login(context: Context) {
     var textPassword by remember { mutableStateOf<String>("") }
     var passwordVisibility: Boolean by remember { mutableStateOf(false) }
 
-   /*val  modifier = Modifier.verticalScroll(
-        state = rememberScrollState())*/
+    /*val  modifier = Modifier.verticalScroll(
+         state = rememberScrollState())*/
 
     Column(
         modifier = Modifier
             .verticalScroll(state = rememberScrollState())
-            .fillMaxHeight()
             .padding(0.dp, 10.dp, 0.dp, 0.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
         Text(
             text = stringResource(id = R.string.skip),
             modifier = Modifier
@@ -274,9 +275,9 @@ private fun Login(context: Context) {
             )
         }
 
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(60.dp))
 
-        Row(modifier = Modifier.weight(2f, false)) {
+        Row {
 
             Text(
                 text = stringResource(id = R.string.are_you_new_user),
@@ -294,8 +295,9 @@ private fun Login(context: Context) {
 
         }
 
-    }
+        Spacer(modifier = Modifier.height(30.dp))
 
+    }
 
 
 }
@@ -308,10 +310,11 @@ fun InfiniteAnimation() {
         initialValue = 120.0f,
         targetValue = 130.0f,
         animationSpec = infiniteRepeatable(
-            animation = tween(800, delayMillis = 100,easing = FastOutLinearInEasing),
+            animation = tween(800, delayMillis = 100, easing = FastOutLinearInEasing),
             repeatMode = RepeatMode.Reverse
         )
     )
+
     Image(
         painter = painterResource(R.drawable.ic_logo),
         contentDescription = "heart",
@@ -320,11 +323,6 @@ fun InfiniteAnimation() {
     )
 }
 
-
-@Composable
-fun Greeting2(name: String) {
-    Text(text = "Hello $name!")
-}
 
 @Preview(showBackground = true)
 @Composable
