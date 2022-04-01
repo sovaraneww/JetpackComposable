@@ -126,7 +126,7 @@ private fun Login(context: Context) {
                 .align(Alignment.Start)
                 .padding(start = 20.dp),
             textAlign = TextAlign.End,
-            color = Color.Black,
+            color = MaterialTheme.colors.onSurface,
             fontWeight = FontWeight.Bold,
             fontSize = 30.sp,
             style = TextStyle(fontFamily = fonts)
@@ -138,7 +138,7 @@ private fun Login(context: Context) {
                 .align(Alignment.Start)
                 .padding(top = 0.dp, start = 20.dp),
             textAlign = TextAlign.Start,
-            color = Color.Black,
+            color = MaterialTheme.colors.onSurface,
             fontWeight = FontWeight.Normal,
             fontSize = 25.sp,
             style = TextStyle(fontFamily = fonts)
@@ -178,7 +178,8 @@ private fun Login(context: Context) {
                 placeholder = {
                     Text(
                         text = stringResource(id = R.string.email),
-                        style = TextStyle(fontFamily = fonts)
+                        style = TextStyle(fontFamily = fonts),
+                        color = Color.Gray
                     )
                 }
             )
@@ -219,7 +220,8 @@ private fun Login(context: Context) {
                 placeholder = {
                     Text(
                         text = stringResource(id = R.string.password),
-                        style = TextStyle(fontFamily = fonts)
+                        style = TextStyle(fontFamily = fonts),
+                        color = Color.Gray
                     )
                 },
                 trailingIcon = {
@@ -239,7 +241,7 @@ private fun Login(context: Context) {
 
         Text(
             text = stringResource(id = R.string.forgot_password),
-            color = Black,
+            color = MaterialTheme.colors.onSurface,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier
@@ -281,7 +283,7 @@ private fun Login(context: Context) {
 
             Text(
                 text = stringResource(id = R.string.are_you_new_user),
-                color = Black,
+                color = MaterialTheme.colors.onSurface,
                 fontWeight = FontWeight.Bold
             )
 

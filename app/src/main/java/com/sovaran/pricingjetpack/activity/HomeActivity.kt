@@ -20,14 +20,14 @@ import com.sovaran.pricingjetpack.activity.ui.theme.PricingJetpackTheme
 import com.sovaran.pricingjetpack.model.Plant
 import com.sovaran.pricingjetpack.ui.theme.Black
 import com.sovaran.pricingjetpack.ui.theme.Purple500
+import com.sovaran.pricingjetpack.ui.theme.Purple700
 import com.sovaran.pricingjetpack.ui.theme.White
-
 
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            com.sovaran.pricingjetpack.ui.theme.PricingJetpackTheme {
+            com.sovaran.pricingjetpack.ui.theme.HomeScreenTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -70,11 +70,10 @@ fun setUIHome() {
     platList.add(plant2)
     platList.add(plant)
 
-
     Scaffold(
         topBar = {
             TopAppBar(
-                backgroundColor = Black,
+                backgroundColor = Purple500,
                 title = {
                     Text(
                         stringResource(R.string.app_name),
@@ -102,7 +101,7 @@ fun setUIHome() {
                     Text(
                         "\uD83C\uDF3F  Plants in Cosmetics",
                         style = MaterialTheme.typography.h3,
-                        color = Black,
+                        color = MaterialTheme.colors.onSurface,
                         fontSize = 45.sp
                     )
                 }

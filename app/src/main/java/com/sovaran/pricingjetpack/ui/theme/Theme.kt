@@ -1,21 +1,20 @@
 package com.sovaran.pricingjetpack.ui.theme
 
-import android.graphics.Color
+
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Typography
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.font.FontWeight.Companion.Black
+
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sovaran.pricingjetpack.R
+import com.sovaran.pricingjetpack.activity.ui.theme.Purple700
 
 
 private val DarkColorPalette = darkColors(
@@ -66,11 +65,42 @@ fun PricingJetpackTheme(
 
     if (darkTheme) {
         systemUiController.setSystemBarsColor(
-            color = Teal200
+            color = Black
         )
     } else {
         systemUiController.setSystemBarsColor(
             color = White
+        )
+    }
+
+    val colors = if (darkTheme) {
+        DarkColorPalette
+    } else {
+        LightColorPalette
+    }
+
+    MaterialTheme(
+        colors = colors,
+        typography = appTypography,
+        shapes = Shapes,
+        content = content
+    )
+}
+
+@Composable
+fun HomeScreenTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val systemUiController = rememberSystemUiController()
+
+    if (darkTheme) {
+        systemUiController.setSystemBarsColor(
+            color = Purple700
+        )
+    } else {
+        systemUiController.setSystemBarsColor(
+            color = Purple700
         )
     }
 

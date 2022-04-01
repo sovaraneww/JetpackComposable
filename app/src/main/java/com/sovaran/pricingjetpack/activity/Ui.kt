@@ -44,12 +44,12 @@ fun platList(name: String, des: String, plant: Int) {
                 Text(
                     text = name,
                     style = MaterialTheme.typography.h4,
-                    color = MaterialTheme.colors.onSurface,
+                    color = MaterialTheme.colors.onSurface
                 )
                 Text(
                     text = des,
                     style = MaterialTheme.typography.body1,
-                    color = Black
+                    color = MaterialTheme.colors.onSurface
                 )
             }
 
@@ -62,6 +62,6 @@ fun platList(name: String, des: String, plant: Int) {
 @Composable
 fun DefaultPreview5() {
     PricingJetpackTheme {
-        platList(name = "Hello", des = "", plant = R.drawable.ic_launcher_foreground)
+        platList(name = "Aloe Vera", des = "It is used in the pharmaceutical industryfor its healing properties and it can often be found in serveral cosmetic products as well.", plant = R.drawable.ic_aloe_vera)
     }
 }
