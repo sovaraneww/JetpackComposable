@@ -99,7 +99,7 @@ fun setUIHome() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        "\uD83C\uDF3F  Plants in Cosmetics",
+                        "\uD83C\uDF3F  ₹ Plants in Cosmetics",
                         style = MaterialTheme.typography.h3,
                         color = MaterialTheme.colors.onSurface,
                         fontSize = 45.sp

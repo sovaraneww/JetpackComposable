@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-       /* Handler().postDelayed(Runnable {
+        /*Handler().postDelayed(Runnable {
             startActivity(Intent(this, LoginActivity::class.java))
             //finish()
         }, 2000)*/
@@ -58,7 +58,7 @@ fun SetUI(context: Context) {
         modifier = Modifier
             .fillMaxHeight()
             .fillMaxWidth()
-            .padding(0.dp, 60.dp, 0.dp, 0.dp),
+            .padding(top = 60.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -99,7 +99,7 @@ fun SetUI(context: Context) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
 fun DefaultPreview() {
     PricingJetpackTheme {
